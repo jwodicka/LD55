@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cr4ukprpycwgr"]
+[gd_scene load_steps=10 format=3 uid="uid://cr4ukprpycwgr"]
 
 [ext_resource type="Script" path="res://DropTarget.gd" id="1_28n0m"]
+[ext_resource type="PackedScene" uid="uid://db1383sgc661t" path="res://target_connector.tscn" id="1_lhew0"]
 [ext_resource type="Script" path="res://DraggableGlyph.gd" id="2_nlvb6"]
-[ext_resource type="Script" path="res://TargetConnector.gd" id="3_cnqob"]
+[ext_resource type="AudioStream" uid="uid://cpmubidwd0mgc" path="res://sounds/Glyph-001.wav" id="3_r8t6c"]
 [ext_resource type="Texture2D" uid="uid://bdiw5ctykxk4b" path="res://salt.svg" id="4_yta3j"]
 [ext_resource type="Texture2D" uid="uid://dd7ffuc3ktx6n" path="res://water.svg" id="5_m18ej"]
 [ext_resource type="Texture2D" uid="uid://bwk73qm1cno63" path="res://fire.svg" id="6_gnu3n"]
@@ -15,23 +16,19 @@ radius = 50.0
 
 [node name="SummoningCircle" type="Node2D"]
 
-[node name="TargetConnector" type="Line2D" parent="." node_paths=PackedStringArray("end_a", "end_b")]
-script = ExtResource("3_cnqob")
+[node name="TargetConnector" parent="." node_paths=PackedStringArray("end_a", "end_b") instance=ExtResource("1_lhew0")]
 end_a = NodePath("../DropTarget")
 end_b = NodePath("../DropTarget2")
 
-[node name="TargetConnector2" type="Line2D" parent="." node_paths=PackedStringArray("end_a", "end_b")]
-script = ExtResource("3_cnqob")
+[node name="TargetConnector2" parent="." node_paths=PackedStringArray("end_a", "end_b") instance=ExtResource("1_lhew0")]
 end_a = NodePath("../DropTarget2")
 end_b = NodePath("../DropTarget3")
 
-[node name="TargetConnector3" type="Line2D" parent="." node_paths=PackedStringArray("end_a", "end_b")]
-script = ExtResource("3_cnqob")
+[node name="TargetConnector3" parent="." node_paths=PackedStringArray("end_a", "end_b") instance=ExtResource("1_lhew0")]
 end_a = NodePath("../DropTarget3")
 end_b = NodePath("../DropTarget4")
 
-[node name="TargetConnector4" type="Line2D" parent="." node_paths=PackedStringArray("end_a", "end_b")]
-script = ExtResource("3_cnqob")
+[node name="TargetConnector4" parent="." node_paths=PackedStringArray("end_a", "end_b") instance=ExtResource("1_lhew0")]
 end_a = NodePath("../DropTarget4")
 end_b = NodePath("../DropTarget")
 
@@ -42,12 +39,18 @@ script = ExtResource("1_28n0m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropTarget"]
 shape = SubResource("CircleShape2D_nspb5")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DropTarget"]
+stream = ExtResource("3_r8t6c")
+
 [node name="DropTarget2" type="Area2D" parent="."]
 position = Vector2(922, 172)
 script = ExtResource("1_28n0m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropTarget2"]
 shape = SubResource("CircleShape2D_nspb5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DropTarget2"]
+stream = ExtResource("3_r8t6c")
 
 [node name="DropTarget3" type="Area2D" parent="."]
 position = Vector2(1264, 510)
@@ -56,12 +59,18 @@ script = ExtResource("1_28n0m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropTarget3"]
 shape = SubResource("CircleShape2D_nspb5")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DropTarget3"]
+stream = ExtResource("3_r8t6c")
+
 [node name="DropTarget4" type="Area2D" parent="."]
 position = Vector2(928, 820)
 script = ExtResource("1_28n0m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropTarget4"]
 shape = SubResource("CircleShape2D_nspb5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DropTarget4"]
+stream = ExtResource("3_r8t6c")
 
 [node name="SaltGlyph1" type="Area2D" parent="."]
 position = Vector2(386, 128)
@@ -88,7 +97,7 @@ debug_color = Color(0.819608, 0.282353, 0.717647, 0.419608)
 texture = ExtResource("4_yta3j")
 
 [node name="WaterGlyph" type="Area2D" parent="."]
-position = Vector2(608, 330)
+position = Vector2(266, 592)
 script = ExtResource("2_nlvb6")
 symbol = 3
 

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://db1383sgc661t"]
+
+[ext_resource type="Script" path="res://TargetConnector.gd" id="1_oytll"]
+[ext_resource type="AudioStream" uid="uid://waij1tdiu28v" path="res://sounds/Mystic Hum.wav" id="2_8yjdq"]
+[ext_resource type="AudioStream" uid="uid://c6yag07jw8v2e" path="res://sounds/Problem Hum.wav" id="3_42r75"]
+
+[node name="TargetConnector" type="Line2D" node_paths=PackedStringArray("end_a", "end_b")]
+script = ExtResource("1_oytll")
+end_a = NodePath("")
+end_b = NodePath("")
+
+[node name="CorrectAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8yjdq")
+
+[node name="ErrorAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_42r75")

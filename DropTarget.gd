@@ -71,6 +71,7 @@ func _process(_delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if current_glyph == null:
 		current_glyph = area
+		$AudioStreamPlayer.play()
 		_queue_redraw_neighborhood()
 		#print("Claimed ", area)
 
