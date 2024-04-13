@@ -1,49 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cr4ukprpycwgr"]
+[gd_scene load_steps=2 format=3 uid="uid://cr4ukprpycwgr"]
 
-[ext_resource type="PackedScene" uid="uid://db1383sgc661t" path="res://target_connector.tscn" id="1_lhew0"]
-[ext_resource type="PackedScene" uid="uid://ba6fubdrtgiaa" path="res://drop_target.tscn" id="2_okcwt"]
-[ext_resource type="PackedScene" uid="uid://c8v6el4uu57bv" path="res://draggable_glyph.tscn" id="3_cm24r"]
+[ext_resource type="Script" path="res://SummoningCircle.gd" id="1_4yubp"]
 
 [node name="SummoningCircle" type="Node2D"]
+script = ExtResource("1_4yubp")
+glyphs = Array[int]([4, 4, 2, 3])
+targets = 4
+target_connectors = Array[Vector2i]([Vector2i(0, 1), Vector2i(1, 2), Vector2i(2, 3), Vector2i(3, 0)])
 
-[node name="TargetConnector" parent="." node_paths=PackedStringArray("end_a", "end_b") instance=ExtResource("1_lhew0")]
-end_a = NodePath("../DropTarget")
-end_b = NodePath("../DropTarget2")
+[node name="Glyphs" type="CanvasLayer" parent="."]
+layer = 2
 
-[node name="TargetConnector2" parent="." node_paths=PackedStringArray("end_a", "end_b") instance=ExtResource("1_lhew0")]
-end_a = NodePath("../DropTarget2")
-end_b = NodePath("../DropTarget3")
+[node name="Targets" type="CanvasLayer" parent="."]
 
-[node name="TargetConnector3" parent="." node_paths=PackedStringArray("end_a", "end_b") instance=ExtResource("1_lhew0")]
-end_a = NodePath("../DropTarget3")
-end_b = NodePath("../DropTarget4")
-
-[node name="TargetConnector4" parent="." node_paths=PackedStringArray("end_a", "end_b") instance=ExtResource("1_lhew0")]
-end_a = NodePath("../DropTarget4")
-end_b = NodePath("../DropTarget")
-
-[node name="DropTarget" parent="." instance=ExtResource("2_okcwt")]
-position = Vector2(654, 476)
-
-[node name="DropTarget2" parent="." instance=ExtResource("2_okcwt")]
-position = Vector2(972, 120)
-
-[node name="DropTarget3" parent="." instance=ExtResource("2_okcwt")]
-position = Vector2(1352, 486)
-
-[node name="DropTarget4" parent="." instance=ExtResource("2_okcwt")]
-position = Vector2(982, 858)
-
-[node name="DraggableGlyph" parent="." instance=ExtResource("3_cm24r")]
-position = Vector2(404, 72)
-
-[node name="DraggableGlyph2" parent="." instance=ExtResource("3_cm24r")]
-position = Vector2(244, 136)
-
-[node name="DraggableGlyph3" parent="." instance=ExtResource("3_cm24r")]
-position = Vector2(544, 210)
-symbol = 2
-
-[node name="DraggableGlyph4" parent="." instance=ExtResource("3_cm24r")]
-position = Vector2(314, 290)
-symbol = 3
+[node name="Connectors" type="CanvasLayer" parent="."]
+layer = 0
