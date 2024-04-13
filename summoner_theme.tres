@@ -1,7 +1,17 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://daf7aw2ai0ai5"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://daf7aw2ai0ai5"]
 
+[ext_resource type="Texture2D" uid="uid://drmvu1tlj7kx8" path="res://bg_gradient.tres" id="1_2cs5s"]
 [ext_resource type="FontFile" uid="uid://drjgf2vdbypi" path="res://fonts/WalterTurncoat-Regular.ttf" id="1_buwm6"]
+[ext_resource type="FontFile" uid="uid://bfxvkt6h2o1wd" path="res://fonts/Acme-Regular.ttf" id="2_fhd87"]
 
 [resource]
 default_font = ExtResource("1_buwm6")
 default_font_size = 30
+/colors/air_base = Color(0.666667, 0.529412, 0.223529, 1)
+/colors/earth_base = Color(0.176471, 0.533333, 0.176471, 1)
+/colors/fire_base = Color(0.666667, 0.223529, 0.223529, 1)
+/colors/water_base = Color(0.184314, 0.247059, 0.45098, 1)
+/icons/background_gradient = ExtResource("1_2cs5s")
+HeaderLarge/base_type = &"Label"
+HeaderLarge/font_sizes/font_size = 120
+HeaderLarge/fonts/font = ExtResource("2_fhd87")
