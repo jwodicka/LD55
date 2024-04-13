@@ -1,5 +1,5 @@
 class_name SummoningCircle
-extends Node2D
+extends Control
 
 const DRAGGABLE_GLYPH = preload("res://draggable_glyph.tscn")
 const DROP_TARGET = preload("res://drop_target.tscn")

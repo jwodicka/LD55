@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://0ldqvd7vnlwa"]
+[gd_scene load_steps=3 format=3 uid="uid://0ldqvd7vnlwa"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_vefiu"]
 [ext_resource type="Texture2D" uid="uid://drmvu1tlj7kx8" path="res://bg_gradient.tres" id="2_2k85s"]
-[ext_resource type="Script" path="res://TitleLabel.gd" id="3_0wikk"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -35,7 +34,6 @@ layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Summoner Training Simulator"
 horizontal_alignment = 1
-script = ExtResource("3_0wikk")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

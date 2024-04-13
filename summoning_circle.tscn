@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cr4ukprpycwgr"]
+[gd_scene load_steps=4 format=3 uid="uid://cr4ukprpycwgr"]
 
 [ext_resource type="Script" path="res://SummoningCircle.gd" id="1_4yubp"]
 [ext_resource type="Script" path="res://BackgroundCircle.gd" id="2_b3go5"]
+[ext_resource type="Texture2D" uid="uid://drmvu1tlj7kx8" path="res://bg_gradient.tres" id="3_n004m"]
 
-[node name="SummoningCircle" type="Node2D"]
+[node name="SummoningCircle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_4yubp")
 glyphs = Array[int]([0, 4, 2, 3, 1])
 targets = 5
@@ -20,3 +28,13 @@ layer = 0
 [node name="BackgroundCircle" type="Node2D" parent="."]
 script = ExtResource("2_b3go5")
 color = Color(0.85098, 0.85098, 0.85098, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_n004m")
