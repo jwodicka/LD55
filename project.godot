@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LD55"
-run/main_scene="res://summoning_circle.tscn"
+run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 
 [debug]
@@ -24,6 +24,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/initial_position_type=3
 window/size/resizable=false
+
+[gui]
+
+theme/custom="res://summoner_theme.tres"
 
 [rendering]
 
