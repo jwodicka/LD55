@@ -70,17 +70,17 @@ func _ready() -> void:
 			print("Adjacent points")
 			var offset_a := connector.end_a.position - center
 			var offset_b := connector.end_b.position - center
-			var angle = offset_a.angle_to(offset_b)
-			var angle_step = angle/CURVE_STEPS
+			var angle := offset_a.angle_to(offset_b)
+			var angle_step := angle/CURVE_STEPS
 			for step in range(0, CURVE_STEPS + 1):
-				var theta = angle_step * step
-				var offset = offset_a.rotated(theta) + center
+				var theta := angle_step * step
+				var offset := offset_a.rotated(theta) + center
 				connector.add_point(offset)
 		$Connectors.add_child(connector);
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !solved && _targets.all(
 		func(target: DropTarget) -> bool:
 			return target.is_valid() == GameLogic.State.CORRECT

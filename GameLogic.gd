@@ -11,7 +11,7 @@ static func load_level(level_name: String) -> SummoningCircle:
 	var targets : int = 1
 	var target_connectors : Array[Vector2i] = []
 	var offset_angle : float = 0
-	var flavor_text = ""
+	var flavor_text : String = ""
 	match level_name:
 		"Level 1":
 			glyphs = [Symbol.FIRE]
@@ -24,7 +24,7 @@ static func load_level(level_name: String) -> SummoningCircle:
 			targets = 2
 			target_connectors = [Vector2i(0, 1)]
 			offset_angle = -90
-	var level = SUMMONING_CIRCLE_SCENE.instantiate() as SummoningCircle
+	var level: SummoningCircle = SUMMONING_CIRCLE_SCENE.instantiate() as SummoningCircle
 	level.glyphs = glyphs
 	level.targets = targets
 	level.target_connectors = target_connectors

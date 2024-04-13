@@ -4,6 +4,8 @@ extends Area2D
 var is_dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 
+var is_locked: bool = false
+
 @export
 var symbol : GameLogic.Symbol:
 	get:
@@ -11,7 +13,7 @@ var symbol : GameLogic.Symbol:
 	set(value):
 		if value != _symbol:
 			_symbol = value
-			if $Sprite2D != null:
+			if is_node_ready():
 				$Sprite2D.texture = _get_symbol_texture()
 	
 var _symbol : GameLogic.Symbol
@@ -61,6 +63,8 @@ func _draw() -> void:
 		draw_circle(Vector2.ZERO, 50, _get_symbol_color())
 	
 func begin_drag() -> void:
+	if is_locked:
+		return
 	is_dragging = true;
 	drag_offset = get_global_mouse_position() - position
 	
