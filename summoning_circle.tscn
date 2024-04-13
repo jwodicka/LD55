@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr4ukprpycwgr"]
+[gd_scene load_steps=9 format=3 uid="uid://cr4ukprpycwgr"]
 
 [ext_resource type="Script" path="res://DropTarget.gd" id="1_28n0m"]
 [ext_resource type="Script" path="res://DraggableGlyph.gd" id="2_nlvb6"]
 [ext_resource type="Script" path="res://TargetConnector.gd" id="3_cnqob"]
+[ext_resource type="Texture2D" uid="uid://bdiw5ctykxk4b" path="res://salt.svg" id="4_yta3j"]
+[ext_resource type="Texture2D" uid="uid://dd7ffuc3ktx6n" path="res://water.svg" id="5_m18ej"]
+[ext_resource type="Texture2D" uid="uid://bwk73qm1cno63" path="res://fire.svg" id="6_gnu3n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nspb5"]
 radius = 50.0
@@ -69,6 +72,9 @@ symbol = 4
 shape = SubResource("CircleShape2D_hjn7j")
 debug_color = Color(0.819608, 0.282353, 0.717647, 0.419608)
 
+[node name="Sprite2D" type="Sprite2D" parent="SaltGlyph1"]
+texture = ExtResource("4_yta3j")
+
 [node name="SaltGlyph2" type="Area2D" parent="."]
 position = Vector2(390, 332)
 script = ExtResource("2_nlvb6")
@@ -77,6 +83,9 @@ symbol = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SaltGlyph2"]
 shape = SubResource("CircleShape2D_hjn7j")
 debug_color = Color(0.819608, 0.282353, 0.717647, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="SaltGlyph2"]
+texture = ExtResource("4_yta3j")
 
 [node name="WaterGlyph" type="Area2D" parent="."]
 position = Vector2(608, 330)
@@ -87,6 +96,9 @@ symbol = 3
 shape = SubResource("CircleShape2D_hjn7j")
 debug_color = Color(0.819608, 0.282353, 0.717647, 0.419608)
 
+[node name="Sprite2D" type="Sprite2D" parent="WaterGlyph"]
+texture = ExtResource("5_m18ej")
+
 [node name="FireGlyph" type="Area2D" parent="."]
 position = Vector2(610, 122)
 script = ExtResource("2_nlvb6")
@@ -95,6 +107,9 @@ symbol = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FireGlyph"]
 shape = SubResource("CircleShape2D_hjn7j")
 debug_color = Color(0.819608, 0.282353, 0.717647, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="FireGlyph"]
+texture = ExtResource("6_gnu3n")
 
 [connection signal="area_entered" from="DropTarget" to="DropTarget" method="_on_area_entered"]
 [connection signal="area_exited" from="DropTarget" to="DropTarget" method="_on_area_exited"]

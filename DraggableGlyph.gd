@@ -1,25 +1,23 @@
 class_name DraggableGlyph
 extends Area2D
 
-enum Symbol {EARTH, AIR, FIRE, WATER, SALT}
-
 var is_dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 
 @export
-var symbol : Symbol
+var symbol : GameLogic.Symbol
 
 func _get_symbol_color() -> Color:
 	match symbol:
-		Symbol.EARTH:
+		GameLogic.Symbol.EARTH:
 			return Color.SADDLE_BROWN
-		Symbol.AIR:
+		GameLogic.Symbol.AIR:
 			return Color.DARK_TURQUOISE
-		Symbol.FIRE:
+		GameLogic.Symbol.FIRE:
 			return Color.DARK_RED
-		Symbol.WATER:
+		GameLogic.Symbol.WATER:
 			return Color.AQUA
-		Symbol.SALT:
+		GameLogic.Symbol.SALT:
 			return Color.BEIGE
 		_:
 			return Color.LAWN_GREEN
@@ -28,19 +26,20 @@ func _get_symbol_color() -> Color:
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _draw():
-	draw_circle(Vector2.ZERO, 50, _get_symbol_color())
+func _draw() -> void:
+	if $Sprite2D == null:
+		draw_circle(Vector2.ZERO, 50, _get_symbol_color())
 	
-func begin_drag():
+func begin_drag() -> void:
 	is_dragging = true;
 	drag_offset = get_global_mouse_position() - position
 	
 	
-func end_drag():
+func end_drag() -> void:
 	if is_dragging:
 		is_dragging = false
 
-func _on_input_event(_viewport, event, _shape_idx):
+func _on_input_event(_viewport : Viewport, event : InputEvent, _shape_idx : int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
@@ -49,7 +48,7 @@ func _on_input_event(_viewport, event, _shape_idx):
 				end_drag()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if is_dragging:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			position = get_global_mouse_position() - drag_offset

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="100"
+   height="100"
+   viewBox="0 0 26.458333 26.458334"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="salt.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     units="px"
+     inkscape:zoom="11.11"
+     inkscape:cx="44.329433"
+     inkscape:cy="50"
+     inkscape:window-width="2378"
+     inkscape:window-height="1361"
+     inkscape:window-x="2519"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <inkscape:path-effect
+       effect="taper_stroke"
+       id="path-effect2012"
+       is_visible="true"
+       lpeversion="1"
+       stroke_width="0.76"
+       attach_start="0.6"
+       end_offset="0.3"
+       start_smoothing="0.5"
+       end_smoothing="0.5"
+       jointype="extrapolated"
+       start_shape="center"
+       end_shape="center"
+       miter_limit="100" />
+    <inkscape:path-effect
+       effect="taper_stroke"
+       id="path-effect1799"
+       is_visible="true"
+       lpeversion="1"
+       stroke_width="0.76"
+       attach_start="0.6"
+       end_offset="0.3"
+       start_smoothing="0.5"
+       end_smoothing="0.5"
+       jointype="extrapolated"
+       start_shape="center"
+       end_shape="center"
+       miter_limit="100" />
+    <inkscape:path-effect
+       effect="taper_stroke"
+       id="path-effect1699"
+       is_visible="true"
+       lpeversion="1"
+       stroke_width="0.76"
+       attach_start="0.6"
+       end_offset="0.3"
+       start_smoothing="0.5"
+       end_smoothing="0.5"
+       jointype="extrapolated"
+       start_shape="center"
+       end_shape="center"
+       miter_limit="100" />
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2">
+    <circle
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:0.264583"
+       id="path2277"
+       cx="13.264889"
+       cy="13.241075"
+       r="12.812407" />
+  </g>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="rect12344"
+       style="stroke-width:0.264583"
+       transform="rotate(45)"
+       d="m 16.075031,-2.6483841 c 0,0 3.85314,1.4145318 5.267672,0 0,0 -1.111418,4.1179917 0,5.2967682 0,0 -3.987857,-1.2798145 -5.267672,0 0,0 1.330333,-3.9327554 0,-5.2967682 z"
+       sodipodi:nodetypes="ccccc" />
+  </g>
+</svg>
