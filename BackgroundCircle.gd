@@ -1,7 +1,13 @@
 extends Node2D
 
-@export_color_no_alpha
-var color : Color
+@export
+var color : Color:
+	get:
+		return _color
+	set (value):
+		_color = value
+		queue_redraw()
+var _color : Color
 
 @export
 var radius : float
@@ -14,5 +20,5 @@ func _draw() -> void:
 	draw_circle(Vector2.ZERO, radius, color)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

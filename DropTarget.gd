@@ -13,7 +13,6 @@ func _queue_redraw_neighborhood() -> void:
 	for neighbor: DropTarget in neighbors.keys():
 		neighbor.queue_redraw()
 	
-		
 func _get_state_color() -> Color:
 	match is_valid():
 		GameLogic.State.INCOMPLETE:
@@ -31,7 +30,7 @@ func is_valid() -> GameLogic.State:
 	match current_glyph.symbol:
 		GameLogic.Symbol.SALT:
 			if neighbors.keys().any(
-				func (target: DropTarget):
+				func (target: DropTarget) -> bool:
 					return target.current_glyph != null && target.current_glyph.symbol == GameLogic.Symbol.SALT
 			):
 				return GameLogic.State.ERROR
@@ -39,7 +38,7 @@ func is_valid() -> GameLogic.State:
 				return GameLogic.State.CORRECT
 		GameLogic.Symbol.WATER:
 			if neighbors.keys().any(
-				func (target: DropTarget):
+				func (target: DropTarget) -> bool:
 					return target.current_glyph != null && target.current_glyph.symbol == GameLogic.Symbol.FIRE
 			):
 				return GameLogic.State.ERROR
@@ -47,7 +46,7 @@ func is_valid() -> GameLogic.State:
 				return GameLogic.State.CORRECT
 		GameLogic.Symbol.FIRE:
 			if neighbors.keys().any(
-				func (target: DropTarget):
+				func (target: DropTarget) -> bool:
 					return target.current_glyph != null && target.current_glyph.symbol == GameLogic.Symbol.WATER
 			):
 				return GameLogic.State.ERROR

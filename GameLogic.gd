@@ -11,9 +11,14 @@ static func load_level(level_name: String) -> SummoningCircle:
 	var targets : int = 1
 	var target_connectors : Array[Vector2i] = []
 	var offset_angle : float = 0
+	var flavor_text = ""
 	match level_name:
 		"Level 1":
 			glyphs = [Symbol.FIRE]
+			flavor_text = """It's time for your first summoning!
+			
+			All you need to do is place the glyph in the
+			empty space within the summoning circle."""
 		"Level 2":
 			glyphs = [Symbol.FIRE, Symbol.WATER, Symbol.FIRE]
 			targets = 2
@@ -24,5 +29,6 @@ static func load_level(level_name: String) -> SummoningCircle:
 	level.targets = targets
 	level.target_connectors = target_connectors
 	level.offset_angle = offset_angle
+	level.flavor_text = flavor_text
 	return level
 		

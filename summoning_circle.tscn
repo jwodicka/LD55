@@ -18,16 +18,13 @@ targets = 5
 target_connectors = Array[Vector2i]([Vector2i(0, 2), Vector2i(1, 3), Vector2i(2, 4), Vector2i(3, 0), Vector2i(4, 1)])
 
 [node name="Glyphs" type="CanvasLayer" parent="."]
-layer = 2
+layer = 10
 
 [node name="Targets" type="CanvasLayer" parent="."]
+layer = 8
 
 [node name="Connectors" type="CanvasLayer" parent="."]
-layer = 0
-
-[node name="BackgroundCircle" type="Node2D" parent="."]
-script = ExtResource("2_b3go5")
-color = Color(0.85098, 0.85098, 0.85098, 1)
+layer = 6
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -38,3 +35,30 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_n004m")
+
+[node name="BackgroundCircle" type="Node2D" parent="."]
+script = ExtResource("2_b3go5")
+color = Color(0.85098, 0.85098, 0.85098, 1)
+
+[node name="FlavorContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -73.5
+offset_right = 543.0
+offset_bottom = 73.5
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="PanelContainer" type="PanelContainer" parent="FlavorContainer"]
+layout_mode = 2
+theme_type_variation = &"FlavorText"
+
+[node name="FlavorLabel" type="Label" parent="FlavorContainer/PanelContainer"]
+layout_mode = 2
+text = "This is some flavor text
+explaining what to do in this level"
