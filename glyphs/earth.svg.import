@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd7ffuc3ktx6n"
-path="res://.godot/imported/water.svg-adbbdda2b75f55de543ff275bc31dce9.ctex"
+uid="uid://bq42s0msf8t84"
+path="res://.godot/imported/earth.svg-dabff4e6fff5be09d4d678be237c4cb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://water.svg"
-dest_files=["res://.godot/imported/water.svg-adbbdda2b75f55de543ff275bc31dce9.ctex"]
+source_file="res://glyphs/earth.svg"
+dest_files=["res://.godot/imported/earth.svg-dabff4e6fff5be09d4d678be237c4cb5.ctex"]
 
 [params]
 

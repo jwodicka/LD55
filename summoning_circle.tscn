@@ -1,18 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cr4ukprpycwgr"]
+[gd_scene load_steps=4 format=3 uid="uid://cr4ukprpycwgr"]
 
-[ext_resource type="Script" path="res://DropTarget.gd" id="1_28n0m"]
 [ext_resource type="PackedScene" uid="uid://db1383sgc661t" path="res://target_connector.tscn" id="1_lhew0"]
-[ext_resource type="Script" path="res://DraggableGlyph.gd" id="2_nlvb6"]
-[ext_resource type="AudioStream" uid="uid://cpmubidwd0mgc" path="res://sounds/Glyph-001.wav" id="3_r8t6c"]
-[ext_resource type="Texture2D" uid="uid://bdiw5ctykxk4b" path="res://salt.svg" id="4_yta3j"]
-[ext_resource type="Texture2D" uid="uid://dd7ffuc3ktx6n" path="res://water.svg" id="5_m18ej"]
-[ext_resource type="Texture2D" uid="uid://bwk73qm1cno63" path="res://fire.svg" id="6_gnu3n"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_nspb5"]
-radius = 50.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_hjn7j"]
-radius = 50.0
+[ext_resource type="PackedScene" uid="uid://ba6fubdrtgiaa" path="res://drop_target.tscn" id="2_okcwt"]
+[ext_resource type="PackedScene" uid="uid://c8v6el4uu57bv" path="res://draggable_glyph.tscn" id="3_cm24r"]
 
 [node name="SummoningCircle" type="Node2D"]
 
@@ -32,103 +22,28 @@ end_b = NodePath("../DropTarget4")
 end_a = NodePath("../DropTarget4")
 end_b = NodePath("../DropTarget")
 
-[node name="DropTarget" type="Area2D" parent="."]
-position = Vector2(608, 514)
-script = ExtResource("1_28n0m")
+[node name="DropTarget" parent="." instance=ExtResource("2_okcwt")]
+position = Vector2(654, 476)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DropTarget"]
-shape = SubResource("CircleShape2D_nspb5")
+[node name="DropTarget2" parent="." instance=ExtResource("2_okcwt")]
+position = Vector2(972, 120)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DropTarget"]
-stream = ExtResource("3_r8t6c")
+[node name="DropTarget3" parent="." instance=ExtResource("2_okcwt")]
+position = Vector2(1352, 486)
 
-[node name="DropTarget2" type="Area2D" parent="."]
-position = Vector2(922, 172)
-script = ExtResource("1_28n0m")
+[node name="DropTarget4" parent="." instance=ExtResource("2_okcwt")]
+position = Vector2(982, 858)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DropTarget2"]
-shape = SubResource("CircleShape2D_nspb5")
+[node name="DraggableGlyph" parent="." instance=ExtResource("3_cm24r")]
+position = Vector2(404, 72)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DropTarget2"]
-stream = ExtResource("3_r8t6c")
+[node name="DraggableGlyph2" parent="." instance=ExtResource("3_cm24r")]
+position = Vector2(244, 136)
 
-[node name="DropTarget3" type="Area2D" parent="."]
-position = Vector2(1264, 510)
-script = ExtResource("1_28n0m")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DropTarget3"]
-shape = SubResource("CircleShape2D_nspb5")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DropTarget3"]
-stream = ExtResource("3_r8t6c")
-
-[node name="DropTarget4" type="Area2D" parent="."]
-position = Vector2(928, 820)
-script = ExtResource("1_28n0m")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DropTarget4"]
-shape = SubResource("CircleShape2D_nspb5")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DropTarget4"]
-stream = ExtResource("3_r8t6c")
-
-[node name="SaltGlyph1" type="Area2D" parent="."]
-position = Vector2(386, 128)
-script = ExtResource("2_nlvb6")
-symbol = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SaltGlyph1"]
-shape = SubResource("CircleShape2D_hjn7j")
-debug_color = Color(0.819608, 0.282353, 0.717647, 0.419608)
-
-[node name="Sprite2D" type="Sprite2D" parent="SaltGlyph1"]
-texture = ExtResource("4_yta3j")
-
-[node name="SaltGlyph2" type="Area2D" parent="."]
-position = Vector2(390, 332)
-script = ExtResource("2_nlvb6")
-symbol = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SaltGlyph2"]
-shape = SubResource("CircleShape2D_hjn7j")
-debug_color = Color(0.819608, 0.282353, 0.717647, 0.419608)
-
-[node name="Sprite2D" type="Sprite2D" parent="SaltGlyph2"]
-texture = ExtResource("4_yta3j")
-
-[node name="WaterGlyph" type="Area2D" parent="."]
-position = Vector2(266, 592)
-script = ExtResource("2_nlvb6")
-symbol = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterGlyph"]
-shape = SubResource("CircleShape2D_hjn7j")
-debug_color = Color(0.819608, 0.282353, 0.717647, 0.419608)
-
-[node name="Sprite2D" type="Sprite2D" parent="WaterGlyph"]
-texture = ExtResource("5_m18ej")
-
-[node name="FireGlyph" type="Area2D" parent="."]
-position = Vector2(610, 122)
-script = ExtResource("2_nlvb6")
+[node name="DraggableGlyph3" parent="." instance=ExtResource("3_cm24r")]
+position = Vector2(544, 210)
 symbol = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FireGlyph"]
-shape = SubResource("CircleShape2D_hjn7j")
-debug_color = Color(0.819608, 0.282353, 0.717647, 0.419608)
-
-[node name="Sprite2D" type="Sprite2D" parent="FireGlyph"]
-texture = ExtResource("6_gnu3n")
-
-[connection signal="area_entered" from="DropTarget" to="DropTarget" method="_on_area_entered"]
-[connection signal="area_exited" from="DropTarget" to="DropTarget" method="_on_area_exited"]
-[connection signal="area_entered" from="DropTarget2" to="DropTarget2" method="_on_area_entered"]
-[connection signal="area_exited" from="DropTarget2" to="DropTarget2" method="_on_area_exited"]
-[connection signal="area_entered" from="DropTarget3" to="DropTarget3" method="_on_area_entered"]
-[connection signal="area_exited" from="DropTarget3" to="DropTarget3" method="_on_area_exited"]
-[connection signal="area_entered" from="DropTarget4" to="DropTarget4" method="_on_area_entered"]
-[connection signal="area_exited" from="DropTarget4" to="DropTarget4" method="_on_area_exited"]
-[connection signal="input_event" from="SaltGlyph1" to="SaltGlyph1" method="_on_input_event"]
-[connection signal="input_event" from="SaltGlyph2" to="SaltGlyph2" method="_on_input_event"]
-[connection signal="input_event" from="WaterGlyph" to="WaterGlyph" method="_on_input_event"]
-[connection signal="input_event" from="FireGlyph" to="FireGlyph" method="_on_input_event"]
+[node name="DraggableGlyph4" parent="." instance=ExtResource("3_cm24r")]
+position = Vector2(314, 290)
+symbol = 3

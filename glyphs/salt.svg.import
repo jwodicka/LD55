@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwk73qm1cno63"
-path="res://.godot/imported/fire.svg-eec06166d87136426d94b1d2e61fccba.ctex"
+uid="uid://bdiw5ctykxk4b"
+path="res://.godot/imported/salt.svg-178cee508b03e0cc9e5960de2e7fb6bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://fire.svg"
-dest_files=["res://.godot/imported/fire.svg-eec06166d87136426d94b1d2e61fccba.ctex"]
+source_file="res://glyphs/salt.svg"
+dest_files=["res://.godot/imported/salt.svg-178cee508b03e0cc9e5960de2e7fb6bf.ctex"]
 
 [params]
 

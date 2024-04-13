@@ -5,7 +5,37 @@ var is_dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 
 @export
-var symbol : GameLogic.Symbol
+var symbol : GameLogic.Symbol:
+	get:
+		return _symbol
+	set(value):
+		if value != _symbol:
+			_symbol = value
+			if $Sprite2D != null:
+				$Sprite2D.texture = _get_symbol_texture()
+	
+var _symbol : GameLogic.Symbol
+
+const AIR_TEXTURE := preload("res://glyphs/air.svg")
+const EARTH_TEXTURE := preload("res://glyphs/earth.svg")
+const FIRE_TEXTURE := preload("res://glyphs/fire.svg")
+const SALT_TEXTURE := preload("res://glyphs/salt.svg")
+const WATER_TEXTURE := preload("res://glyphs/water.svg")
+
+func _get_symbol_texture() -> Texture:
+	match symbol:
+		GameLogic.Symbol.AIR:
+			return AIR_TEXTURE
+		GameLogic.Symbol.EARTH:
+			return EARTH_TEXTURE
+		GameLogic.Symbol.FIRE:
+			return FIRE_TEXTURE
+		GameLogic.Symbol.SALT:
+			return SALT_TEXTURE
+		GameLogic.Symbol.WATER:
+			return WATER_TEXTURE
+		_:
+			return SALT_TEXTURE
 
 func _get_symbol_color() -> Color:
 	match symbol:
@@ -24,7 +54,7 @@ func _get_symbol_color() -> Color:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$Sprite2D.texture = _get_symbol_texture()
 
 func _draw() -> void:
 	if $Sprite2D == null:
