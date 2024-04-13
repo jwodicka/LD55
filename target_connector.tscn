@@ -4,10 +4,9 @@
 [ext_resource type="AudioStream" uid="uid://waij1tdiu28v" path="res://sounds/Mystic Hum.wav" id="2_8yjdq"]
 [ext_resource type="AudioStream" uid="uid://c6yag07jw8v2e" path="res://sounds/Problem Hum.wav" id="3_42r75"]
 
-[node name="TargetConnector" type="Line2D" node_paths=PackedStringArray("end_a", "end_b")]
+[node name="TargetConnector" type="Line2D"]
+width = 35.0
 script = ExtResource("1_oytll")
-end_a = NodePath("")
-end_b = NodePath("")
 
 [node name="CorrectAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_8yjdq")
