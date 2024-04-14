@@ -4,7 +4,15 @@ extends Area2D
 var is_dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 
-var is_locked: bool = false
+var is_locked: bool:
+	get:
+		return _is_locked
+	set(value):
+		if (value != _is_locked):
+			_is_locked = value
+			$Sprite2D.material.set_shader_parameter("shade_color", _get_modified_color())
+
+var _is_locked: bool = false
 
 @export
 var symbol : GameLogic.Symbol:
@@ -39,7 +47,13 @@ func _get_symbol_texture() -> Texture:
 		_:
 			return SALT_TEXTURE
 
-func _get_symbol_color() -> Color:
+func _get_modified_color() -> Color:
+	var color := _get_color()
+	if _is_locked:
+		return color.lightened(0.5);
+	return color
+
+func _get_color() -> Color:
 	match symbol:
 		GameLogic.Symbol.EARTH:
 			return Color.SADDLE_BROWN
@@ -57,10 +71,7 @@ func _get_symbol_color() -> Color:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Sprite2D.texture = _get_symbol_texture()
-
-func _draw() -> void:
-	if $Sprite2D == null:
-		draw_circle(Vector2.ZERO, 50, _get_symbol_color())
+	$Sprite2D.material.set_shader_parameter("shade_color", _get_modified_color())
 	
 func begin_drag() -> void:
 	if is_locked:

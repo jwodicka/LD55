@@ -21,6 +21,7 @@ static func load_level(level_name: String) -> SummoningCircle:
 	var offset_angle : float = 0
 	var flavor_text : String = ""
 	var initial_placements : Dictionary = {} # Maps target number to glyph symbol
+	var locked_targets : Array[int] = []
 	match level_name:
 		"Level 1":
 			flavor_text = """It's time for your first summoning!
@@ -33,6 +34,7 @@ static func load_level(level_name: String) -> SummoningCircle:
 			targets = 2
 			target_connectors = [Vector2i(0, 1), Vector2i(1,0)]
 			initial_placements = {0: Symbol.FIRE}
+			locked_targets = [0]
 			offset_angle = -90
 		"Level 2":
 			flavor_text = """It's not always that easy.
@@ -73,6 +75,36 @@ static func load_level(level_name: String) -> SummoningCircle:
 				Vector2i(4, 1),
 				Vector2i(2, 3)
 			]
+		"Level 5":
+			glyphs = [EARTH, AIR, WATER, SALT, FIRE, FIRE]
+			targets = 6
+			target_connectors = [
+				Vector2i(0, 2),
+				Vector2i(2, 4),
+				Vector2i(4, 0),
+				Vector2i(1, 3),
+				Vector2i(3, 5),
+				Vector2i(5, 1),
+				Vector2i(1, 2),
+				Vector2i(2, 3),
+				Vector2i(3, 4)
+			]
+			offset_angle = 30
+		"Level 6":
+			glyphs = [FIRE, WATER, AIR, AIR, SALT, SALT, SALT]
+			targets = 7
+			target_connectors = [
+				Vector2i(0, 2),
+				Vector2i(0, 3),
+				Vector2i(0, 4),
+				Vector2i(0, 5),
+				Vector2i(1, 3),
+				Vector2i(1, 6),
+				Vector2i(2, 5),
+				Vector2i(3, 4),
+				Vector2i(4, 6),
+				Vector2i(5, 0)
+			]
 	var level: SummoningCircle = SUMMONING_CIRCLE_SCENE.instantiate() as SummoningCircle
 	level.glyphs = glyphs
 	level.targets = targets
@@ -80,6 +112,7 @@ static func load_level(level_name: String) -> SummoningCircle:
 	level.offset_angle = offset_angle
 	level.flavor_text = flavor_text
 	level.initial_placements = initial_placements
+	level.locked_targets = locked_targets
 	return level
 
 static func has_glyph(target: DropTarget) -> bool:

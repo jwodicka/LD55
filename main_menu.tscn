@@ -69,7 +69,17 @@ text = "Lesson Three"
 layout_mode = 2
 text = "Lesson Four"
 
+[node name="Button5" type="Button" parent="VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Lesson Five"
+
+[node name="Button6" type="Button" parent="VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Lesson Six"
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/VBoxContainer/Button" to="." method="_on_level_select" binds= ["Level 1"]]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/VBoxContainer/Button2" to="." method="_on_level_select" binds= ["Level 2"]]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/VBoxContainer/Button3" to="." method="_on_level_select" binds= ["Level 3"]]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/VBoxContainer/Button4" to="." method="_on_level_select" binds= ["Level 4"]]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/VBoxContainer/Button5" to="." method="_on_level_select" binds= ["Level 5"]]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/VBoxContainer/Button6" to="." method="_on_level_select" binds= ["Level 6"]]

@@ -22,6 +22,9 @@ var target_connectors : Array[Vector2i] = []
 var initial_placements : Dictionary = {}
 
 @export
+var locked_targets : Array[int] = []
+
+@export
 var offset_angle : float = 0
 
 @export
@@ -70,6 +73,8 @@ func _ready() -> void:
 			# We bypass the setter to avoid the audio cue
 			target._glyph_held = true
 			$Glyphs.add_child(glyph)
+			if locked_targets.has(i):
+				glyph.is_locked = true;
 	for c in target_connectors:
 		var connector: TargetConnector = TARGET_CONNECTOR.instantiate()
 		connector.end_a = _targets[c.x]
