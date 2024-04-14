@@ -1,10 +1,14 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://daf7aw2ai0ai5"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://daf7aw2ai0ai5"]
 
 [ext_resource type="Texture2D" uid="uid://drmvu1tlj7kx8" path="res://bg_gradient.tres" id="1_2cs5s"]
 [ext_resource type="FontFile" uid="uid://drjgf2vdbypi" path="res://fonts/WalterTurncoat-Regular.ttf" id="1_buwm6"]
 [ext_resource type="FontFile" uid="uid://bfxvkt6h2o1wd" path="res://fonts/Acme-Regular.ttf" id="2_fhd87"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gw5j3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wtpc"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
 bg_color = Color(0, 0, 0, 0.372549)
 border_width_left = 5
 border_width_top = 5
@@ -15,10 +19,22 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
-expand_margin_left = 20.0
-expand_margin_top = 20.0
-expand_margin_right = 20.0
-expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gw5j3"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0, 0, 0, 0.372549)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [resource]
 default_font = ExtResource("1_buwm6")
@@ -32,8 +48,12 @@ default_font_size = 30
 /colors/salt_base = Color(0.623529, 0.670588, 0.603922, 1)
 /colors/water_base = Color(0.184314, 0.247059, 0.45098, 1)
 /icons/background_gradient = ExtResource("1_2cs5s")
+/styles/panel = SubResource("StyleBoxFlat_0wtpc")
 FlavorText/base_type = &"PanelContainer"
 FlavorText/styles/panel = SubResource("StyleBoxFlat_gw5j3")
 HeaderLarge/base_type = &"Label"
 HeaderLarge/font_sizes/font_size = 120
 HeaderLarge/fonts/font = ExtResource("2_fhd87")
+HeaderMedium/base_type = &"Label"
+HeaderMedium/font_sizes/font_size = 48
+HeaderMedium/fonts/font = ExtResource("2_fhd87")

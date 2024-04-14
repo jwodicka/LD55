@@ -53,6 +53,8 @@ func load_level() -> void:
 	circle.offset_angle = offset_angle
 	circle.initial_placements = initial_placements
 	circle.locked_targets = locked_targets
+	
+	circle.puzzle_solved.connect(_on_victory)
 
 	$BoxContainer.add_child(circle)
 
@@ -74,6 +76,7 @@ func _on_victory() -> void:
 	if end_flavor_text.is_empty():
 		end_flavor_text = "Another successful summoning!"
 	(find_child("EndFlavorLabel") as Label).text = end_flavor_text
+	(find_child("VictoryPanel") as Container).custom_minimum_size.x = get_viewport_rect().size.x * 0.33
 
 	if next_level.is_empty():
 		find_child("NextButton").hide()

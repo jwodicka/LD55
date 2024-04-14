@@ -1,0 +1,223 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddicuykdjdoxw"]
+
+[ext_resource type="Script" path="res://Credits.gd" id="1_2dgcp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvxdg"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+
+[node name="Credits" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvxdg")
+script = ExtResource("1_2dgcp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Credits and acknowledgments"
+autowrap_mode = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FlowContainer" type="FlowContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer"]
+layout_mode = 2
+text = "Built with "
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer"]
+layout_mode = 2
+text = "Godot 4.2.1"
+
+[node name="FlowContainer2" type="FlowContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer2"]
+layout_mode = 2
+text = "Everything built by Jason Wodicka live on stream at "
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer2"]
+layout_mode = 2
+text = "twitch.tv/brainbetter"
+uri = "https://twitch.tv/brainbetter"
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer2"]
+layout_mode = 2
+text = " except:"
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Typography"
+autowrap_mode = 3
+
+[node name="FlowContainer3" type="FlowContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer3"]
+layout_mode = 2
+text = "Header text: "
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer3"]
+layout_mode = 2
+text = "Acme"
+uri = "https://fonts.google.com/specimen/Acme"
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer3"]
+layout_mode = 2
+text = " by Juan Pablo del Peral for Huerta Tipográfica"
+
+[node name="FlowContainer4" type="FlowContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer4"]
+layout_mode = 2
+text = "Body text: "
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer4"]
+layout_mode = 2
+text = "Walter Turncoat"
+uri = "https://fonts.google.com/specimen/Walter+Turncoat"
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer4"]
+layout_mode = 2
+text = " by Sideshow"
+
+[node name="FlowContainer5" type="FlowContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer5"]
+layout_mode = 2
+text = "Incomprehensible scribbling: "
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer5"]
+layout_mode = 2
+text = "Noto Sans Cuneiform"
+uri = "https://fonts.google.com/noto/specimen/Noto+Sans+Cuneiform"
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer5"]
+layout_mode = 2
+text = " from Google"
+
+[node name="Label3" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "all fonts used with permission under Open Font License"
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Tools"
+autowrap_mode = 3
+
+[node name="FlowContainer6" type="FlowContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer6"]
+layout_mode = 2
+text = "All music and sound effects made with "
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer6"]
+layout_mode = 2
+text = "VCV Rack 2"
+uri = "https://vcvrack.com/"
+
+[node name="FlowContainer8" type="FlowContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer8"]
+layout_mode = 2
+text = "Sampled piano instrument: "
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer8"]
+layout_mode = 2
+text = "Spitfire LABS Soft Piano"
+uri = "https://labs.spitfireaudio.com/soft-piano"
+
+[node name="FlowContainer7" type="FlowContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer7"]
+layout_mode = 2
+text = "All textures made with "
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer7"]
+layout_mode = 2
+text = "Inkscape"
+uri = "https://inkscape.org/"
+
+[node name="Label5" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Visual Inspiration"
+autowrap_mode = 3
+
+[node name="FlowContainer9" type="FlowContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer9"]
+layout_mode = 2
+text = "Glyphs inspired by "
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer9"]
+layout_mode = 2
+text = "Symbols, Signs, and Signets"
+uri = "https://store.doverpublications.com/products/9780486222417"
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/FlowContainer9"]
+layout_mode = 2
+text = ", by Ernst Lehner"
+
+[node name="Label6" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Special Thanks"
+autowrap_mode = 3
+
+[node name="Label7" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Playtesting, company, and moral support provided by everyone who joined me in Twitch chat for this endeavor.
+Particular thanks to a few friends who went above and beyond:
+dougbeal
+firewhiskers
+kaivex
+shaterri"
+autowrap_mode = 3
+
+[node name="Label8" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "A final note"
+autowrap_mode = 3
+
+[node name="Label9" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "This was my first game jam, and I've had a blast.
+Thanks for playing this little game. If you enjoyed it, I'd love to know! If you have feedback on how I could make the next one better, I'd love to know that, too."
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = " Back to the Game "
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

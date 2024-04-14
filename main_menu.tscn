@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://0ldqvd7vnlwa"]
+[gd_scene load_steps=6 format=3 uid="uid://0ldqvd7vnlwa"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_vefiu"]
 [ext_resource type="Texture2D" uid="uid://drmvu1tlj7kx8" path="res://bg_gradient.tres" id="2_2k85s"]
+[ext_resource type="Theme" uid="uid://daf7aw2ai0ai5" path="res://summoner_theme.tres" id="3_bh3fc"]
+[ext_resource type="PackedScene" uid="uid://ddicuykdjdoxw" path="res://credits.tscn" id="4_l2l2g"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_sprk1"]
+content_margin_top = 20.0
+color = Color(1, 1, 1, 1)
+thickness = 2
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -34,21 +41,158 @@ layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Summoner Training Simulator"
 horizontal_alignment = 1
+clip_text = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TextEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Here's some text to explain things"
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Congratulations on your new apprenticeship!
 
-[node name="LevelButtons" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/Panel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+Before you get started invoking powers beyond your comprehension, it's important to get a little on-the-job training. That's why we've provided you with this state-of-the-art training simulation!
+
+
+In just a few easy lessons, you'll learn how to build your own summoning circles. From there, even the sky itself is no limit!
+
+Just remember - a good summoner never calls up anything they can't put down.
+ "
+autowrap_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"FlavorText"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer/HFlowContainer"]
+layout_mode = 2
+text = "A game by Jason Wodicka "
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer/HFlowContainer"]
+layout_mode = 2
+text = "@brainbetter"
+uri = "https://twitch.tv/brainbetter"
+
+[node name="HFlowContainer2" type="HFlowContainer" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer/HFlowContainer2"]
+layout_mode = 2
+text = "Built for "
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer/HFlowContainer2"]
+layout_mode = 2
+text = "Ludum Dare 55"
+uri = "https://ldjam.com/events/ludum-dare/55/"
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer/HFlowContainer2"]
+layout_mode = 2
+text = " - theme: \"Summoning\""
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Credits & Acknowledgments"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_bh3fc")
+theme_type_variation = &"FlavorText"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="LevelButtons" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_sprk1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="FlowContainer" type="FlowContainer" parent="VBoxContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MusicCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/FlowContainer"]
+layout_mode = 2
+text = "Play Music?"
+
+[node name="SFXCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/FlowContainer"]
+layout_mode = 2
+button_pressed = true
+text = "Play Sound Effects?"
+
+[node name="Credits" parent="." instance=ExtResource("4_l2l2g")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MarginContainer2/VBoxContainer/PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/FlowContainer/MusicCheckBox" to="." method="_on_music_check_box_toggled"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/FlowContainer/SFXCheckBox" to="." method="_on_sfx_check_box_toggled"]

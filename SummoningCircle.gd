@@ -7,6 +7,8 @@ const TARGET_CONNECTOR = preload("res://target_connector.tscn")
 
 const CURVE_STEPS = 20
 
+signal puzzle_solved
+
 @export
 var radius : float = 300
 
@@ -105,6 +107,7 @@ func on_victory() -> void:
 		target.current_glyph.is_locked = true
 	$BackgroundCircle.color = Color.BLACK
 	$BackgroundCircle/GPUParticles2D.emitting = true
+	puzzle_solved.emit()
 	queue_redraw()
 
 
