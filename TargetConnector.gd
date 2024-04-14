@@ -19,6 +19,9 @@ var state : GameLogic.State:
 			recalculate_audio()
 var _state : GameLogic.State
 
+@export
+var theme : Theme = preload("res://summoner_theme.tres")
+
 @export_category("Materials")
 @export
 var error_material : Material = null
@@ -45,11 +48,11 @@ func is_valid() -> GameLogic.State:
 func _get_state_color() -> Color:
 	match state:
 		GameLogic.State.INCOMPLETE:
-			return Color.GRAY
+			return theme.get_color("incomplete_connection", "")
 		GameLogic.State.ERROR:
-			return Color.FUCHSIA
+			return theme.get_color("error_connection", "")
 		GameLogic.State.CORRECT:
-			return Color.AQUAMARINE
+			return theme.get_color("correct_connection", "")
 		_:
 			return Color.LAWN_GREEN
 

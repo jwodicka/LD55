@@ -9,8 +9,10 @@ var color : Color:
 		if value != _color:
 			_color = value
 			$Sprite2D.material.set_shader_parameter("shade_color", _color)
-	
 var _color := Color.WHITE
+
+@export
+var theme : Theme = preload("res://summoner_theme.tres")
 
 var current_glyph : DraggableGlyph = null
 var glyph_held : bool:
@@ -45,11 +47,11 @@ func _queue_redraw_neighborhood() -> void:
 func _get_state_color() -> Color:
 	match is_valid():
 		GameLogic.State.INCOMPLETE:
-			return Color.GRAY
+			return theme.get_color("incomplete_connection", "")
 		GameLogic.State.ERROR:
-			return Color.FUCHSIA
+			return theme.get_color("error_connection", "")
 		GameLogic.State.CORRECT:
-			return Color.AQUAMARINE
+			return theme.get_color("correct_connection", "")
 		_:
 			return Color.LAWN_GREEN
 

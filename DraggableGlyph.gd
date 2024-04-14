@@ -15,6 +15,9 @@ var is_locked: bool:
 var _is_locked: bool = false
 
 @export
+var theme : Theme = preload("res://summoner_theme.tres")
+
+@export
 var symbol : GameLogic.Symbol:
 	get:
 		return _symbol
@@ -56,15 +59,15 @@ func _get_modified_color() -> Color:
 func _get_color() -> Color:
 	match symbol:
 		GameLogic.Symbol.EARTH:
-			return Color.SADDLE_BROWN
+			return theme.get_color("earth_base", "")
 		GameLogic.Symbol.AIR:
-			return Color.DARK_TURQUOISE
+			return theme.get_color("air_base", "")
 		GameLogic.Symbol.FIRE:
-			return Color.DARK_RED
+			return theme.get_color("fire_base", "")
 		GameLogic.Symbol.WATER:
-			return Color.AQUA
+			return theme.get_color("water_base", "")
 		GameLogic.Symbol.SALT:
-			return Color.BEIGE
+			return theme.get_color("salt_base", "")
 		_:
 			return Color.LAWN_GREEN
 
