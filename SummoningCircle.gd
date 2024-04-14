@@ -44,13 +44,14 @@ func _ready() -> void:
 	$BackgroundCircle.position = center
 	$BackgroundCircle.radius = radius
 	
-	var glyph_position := Vector2(100, 100)
-	for symbol in glyphs:
+	glyphs.shuffle()
+	for i in range(glyphs.size()):
+		var symbol := glyphs[i]
 		var glyph: DraggableGlyph = DRAGGABLE_GLYPH.instantiate()
 		glyph.symbol = symbol
-		glyph.position = Vector2(glyph_position)
+		var offset: Vector2 = (Vector2.UP * (radius + 125)).rotated((TAU / glyphs.size()) * i)
+		glyph.position = offset
 		$Glyphs.add_child(glyph)
-		glyph_position.x += 100
 	for i in range(targets):
 		var target: DropTarget = DROP_TARGET.instantiate()
 		target.name = "DropTarget%d" % i

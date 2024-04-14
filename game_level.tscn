@@ -44,14 +44,6 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_gti28")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_right = 132.0
-offset_bottom = 50.0
-text = "Back"
-icon = ExtResource("4_kfd24")
-expand_icon = true
-
 [node name="VictoryOverlay" type="CanvasLayer" parent="."]
 layer = 50
 visible = false
@@ -102,28 +94,43 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="FlavorContainer" type="MarginContainer" parent="BoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_stretch_ratio = 0.5
+
+[node name="Button" type="Button" parent="BoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Back"
+icon = ExtResource("4_kfd24")
+expand_icon = true
+
+[node name="FlavorContainer" type="MarginContainer" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="PanelContainer" type="PanelContainer" parent="BoxContainer/FlavorContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="BoxContainer/VBoxContainer/FlavorContainer"]
 layout_mode = 2
+size_flags_vertical = 4
 mouse_filter = 2
 theme_type_variation = &"FlavorText"
 
-[node name="FlavorLabel" type="Label" parent="BoxContainer/FlavorContainer/PanelContainer"]
+[node name="FlavorLabel" type="Label" parent="BoxContainer/VBoxContainer/FlavorContainer/PanelContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "This is some flavor text
 explaining what to do in this level"
 autowrap_mode = 3
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VictoryOverlay/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/MenuButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VictoryOverlay/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -59,13 +59,15 @@ func load_level() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var flavor_container = $BoxContainer/VBoxContainer/FlavorContainer
+	var flavor_label = $BoxContainer/VBoxContainer/FlavorContainer/PanelContainer/FlavorLabel
 	if !level_name.is_empty():
 		load_level()
 	if !flavor_text.is_empty():
-		$BoxContainer/FlavorContainer.visible = true
-		$BoxContainer/FlavorContainer/PanelContainer/FlavorLabel.text = flavor_text
+		flavor_container.visible = true
+		flavor_label.text = flavor_text
 	else:
-		$BoxContainer/FlavorContainer.visible = false
+		flavor_container.visible = false
 
 func _on_victory() -> void:
 	var end_flavor_text := victory_text
