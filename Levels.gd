@@ -8,7 +8,7 @@ const WATER = Symbol.WATER
 const SALT = Symbol.SALT
 
 const levels: Dictionary = {
-    "Level 1": {
+    "Lesson 1": {
         flavor_text = """It's time for your first summoning!
 			
         All you need to do is place the glyphs in the
@@ -22,7 +22,7 @@ const levels: Dictionary = {
         locked_targets = [0],
         offset_angle = -90,
     },
-    "Level 2": {
+    "Lesson 2": {
         flavor_text = """It's not always that easy.
         
         Some glyphs don't like having certain other 
@@ -34,7 +34,7 @@ const levels: Dictionary = {
         initial_placements = {0: WATER},
         offset_angle = -90
     },
-    "Level 3": {
+    "Lesson 3": {
 		flavor_text = """Not every glyph cares about exactly
         which other glyphs it connects to.
         
@@ -52,7 +52,7 @@ const levels: Dictionary = {
             Vector2i(2, 4)
         ]
     },
-    "Level 4": {
+    "Lesson 4": {
         glyphs = [SALT, SALT, AIR, EARTH],
         targets = 5,
         target_connectors = [
@@ -66,7 +66,7 @@ const levels: Dictionary = {
         initial_placements = {3: WATER},
         locked_targets = [3]
     },
-    "Level 5": {
+    "Lesson 5": {
         glyphs = [EARTH, AIR, WATER, SALT, FIRE],
         targets = 6,
         target_connectors = [
@@ -84,7 +84,7 @@ const levels: Dictionary = {
         initial_placements = {4: FIRE},
         locked_targets = [4]
     },
-    "Level 6": {
+    "Lesson 6": {
         glyphs = [FIRE, WATER, AIR, AIR, SALT, SALT, SALT],
         targets = 7,
         target_connectors = [

@@ -48,38 +48,7 @@ text = "Here's some text to explain things"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/Panel"]
+[node name="LevelButtons" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/Panel"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Lesson One"
-
-[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Lesson Two"
-
-[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Lesson Three"
-
-[node name="Button4" type="Button" parent="VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Lesson Four"
-
-[node name="Button5" type="Button" parent="VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Lesson Five"
-
-[node name="Button6" type="Button" parent="VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Lesson Six"
-
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/VBoxContainer/Button" to="." method="_on_level_select" binds= ["Level 1"]]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/VBoxContainer/Button2" to="." method="_on_level_select" binds= ["Level 2"]]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/VBoxContainer/Button3" to="." method="_on_level_select" binds= ["Level 3"]]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/VBoxContainer/Button4" to="." method="_on_level_select" binds= ["Level 4"]]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/VBoxContainer/Button5" to="." method="_on_level_select" binds= ["Level 5"]]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/VBoxContainer/Button6" to="." method="_on_level_select" binds= ["Level 6"]]
