@@ -177,6 +177,7 @@ alignment = 1
 
 [node name="MusicCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/FlowContainer"]
 layout_mode = 2
+button_pressed = true
 text = "Play Music?"
 
 [node name="SFXCheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer/MarginContainer/Panel/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/FlowContainer"]
