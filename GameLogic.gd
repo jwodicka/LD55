@@ -3,10 +3,18 @@ class_name GameLogic
 const SUMMONING_CIRCLE_SCENE = preload("res://summoning_circle.tscn")
 
 enum Symbol {EARTH, AIR, FIRE, WATER, SALT}
+const EARTH = Symbol.EARTH
+const AIR = Symbol.AIR
+const FIRE = Symbol.FIRE
+const WATER = Symbol.WATER
+const SALT = Symbol.SALT
+
 enum State {INCOMPLETE, ERROR, CORRECT}
+const INCOMPLETE = State.INCOMPLETE
+const ERROR = State.ERROR
+const CORRECT = State.CORRECT
 
 static func load_level(level_name: String) -> SummoningCircle:
-	
 	var glyphs : Array[Symbol] = []
 	var targets : int = 1
 	var target_connectors : Array[Vector2i] = []
@@ -45,4 +53,49 @@ static func load_level(level_name: String) -> SummoningCircle:
 	level.flavor_text = flavor_text
 	level.initial_placements = initial_placements
 	return level
-		
+
+static func has_glyph(target: DropTarget) -> bool:
+	return target.current_glyph != null
+
+# Only call this on targets that are known to have a current_glyph!
+static func get_glyph(target: DropTarget) -> Symbol:
+	return target.current_glyph.symbol
+
+static func is_target_valid(target: DropTarget) -> GameLogic.State:
+	var current_glyph := target.current_glyph
+	var neighborhood := target.neighbors.keys()
+	#var adjacent_glyphs := target.neighbors.keys().filter(has_glyph) #.map(get_glyph)
+	
+	#print(adjacent_glyphs)
+	
+	if current_glyph == null:
+		return INCOMPLETE
+	match current_glyph.symbol:
+		SALT:
+			if neighborhood.any(
+				func (target: DropTarget) -> bool:
+					return target.current_glyph != null && target.current_glyph.symbol == SALT
+			):
+				return ERROR
+			else:
+				return CORRECT
+		WATER:
+			if neighborhood.any(
+				func (target: DropTarget) -> bool:
+					return target.current_glyph != null && target.current_glyph.symbol == FIRE
+			):
+				return ERROR
+			else:
+				return CORRECT
+		FIRE:
+			if neighborhood.any(
+				func (target: DropTarget) -> bool:
+					return target.current_glyph != null && target.current_glyph.symbol == WATER
+			):
+				return ERROR
+			else:
+				return CORRECT
+		AIR:
+			return INCOMPLETE
+		_:
+			return INCOMPLETE

@@ -43,35 +43,7 @@ func _get_state_color() -> Color:
 			return Color.LAWN_GREEN
 
 func is_valid() -> GameLogic.State:
-	if current_glyph == null:
-		return GameLogic.State.INCOMPLETE
-	match current_glyph.symbol:
-		GameLogic.Symbol.SALT:
-			if neighbors.keys().any(
-				func (target: DropTarget) -> bool:
-					return target.current_glyph != null && target.current_glyph.symbol == GameLogic.Symbol.SALT
-			):
-				return GameLogic.State.ERROR
-			else:
-				return GameLogic.State.CORRECT
-		GameLogic.Symbol.WATER:
-			if neighbors.keys().any(
-				func (target: DropTarget) -> bool:
-					return target.current_glyph != null && target.current_glyph.symbol == GameLogic.Symbol.FIRE
-			):
-				return GameLogic.State.ERROR
-			else:
-				return GameLogic.State.CORRECT
-		GameLogic.Symbol.FIRE:
-			if neighbors.keys().any(
-				func (target: DropTarget) -> bool:
-					return target.current_glyph != null && target.current_glyph.symbol == GameLogic.Symbol.WATER
-			):
-				return GameLogic.State.ERROR
-			else:
-				return GameLogic.State.CORRECT
-		_:
-			return GameLogic.State.INCOMPLETE
+	return GameLogic.is_target_valid(self)
 
 func _draw() -> void:
 	draw_circle(Vector2.ZERO, 60, _get_state_color())
