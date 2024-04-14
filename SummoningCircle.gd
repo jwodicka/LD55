@@ -67,6 +67,8 @@ func _ready() -> void:
 			glyph.symbol = initial_placements[i]
 			glyph.position = Vector2(target.position)
 			target.current_glyph = glyph
+			# We bypass the setter to avoid the audio cue
+			target._glyph_held = true
 			$Glyphs.add_child(glyph)
 	for c in target_connectors:
 		var connector: TargetConnector = TARGET_CONNECTOR.instantiate()
@@ -77,7 +79,13 @@ func _ready() -> void:
 			print("Adjacent points")
 			var offset_a := connector.end_a.position - center
 			var offset_b := connector.end_b.position - center
-			var angle := offset_a.angle_to(offset_b)
+
+			var angle: float
+			if (offset_a + offset_b).is_zero_approx():
+				angle = PI
+			else:
+				angle = offset_a.angle_to(offset_b)
+
 			var angle_step := angle/CURVE_STEPS
 			for step in range(0, CURVE_STEPS + 1):
 				var theta := angle_step * step

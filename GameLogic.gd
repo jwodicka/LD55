@@ -31,7 +31,7 @@ static func load_level(level_name: String) -> SummoningCircle:
 			That's all there is to it!"""
 			glyphs = [Symbol.FIRE]
 			targets = 2
-			target_connectors = [Vector2i(0, 1)]
+			target_connectors = [Vector2i(0, 1), Vector2i(1,0)]
 			initial_placements = {0: Symbol.FIRE}
 			offset_angle = -90
 		"Level 2":
@@ -42,7 +42,7 @@ static func load_level(level_name: String) -> SummoningCircle:
 			circle UNSTABLE if you put them together."""
 			glyphs = [Symbol.FIRE, Symbol.FIRE]
 			targets = 2
-			target_connectors = [Vector2i(0, 1)]
+			target_connectors = [Vector2i(0, 1), Vector2i(1, 0)]
 			initial_placements = {0: Symbol.WATER}
 			offset_angle = -90
 		"Level 3":
@@ -61,6 +61,17 @@ static func load_level(level_name: String) -> SummoningCircle:
 				Vector2i(4, 5),
 				Vector2i(5, 0),
 				Vector2i(2, 4)
+			]
+		"Level 4":
+			glyphs = [SALT, SALT, AIR, EARTH, WATER]
+			targets = 5
+			target_connectors = [
+				Vector2i(0, 2),
+				Vector2i(1, 3),
+				Vector2i(2, 4),
+				Vector2i(3, 0),
+				Vector2i(4, 1),
+				Vector2i(2, 3)
 			]
 	var level: SummoningCircle = SUMMONING_CIRCLE_SCENE.instantiate() as SummoningCircle
 	level.glyphs = glyphs
