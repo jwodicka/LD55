@@ -105,7 +105,8 @@ func _process(_delta: float) -> void:
 		solved = true
 		for target: DropTarget in _targets:
 			target.current_glyph.is_locked = true
-		$BackgroundCircle.color = Color.DARK_MAGENTA
+		$BackgroundCircle.color = Color.BLACK
+		$BackgroundCircle/GPUParticles2D.emitting = true
 		queue_redraw()
 
 func _on_button_pressed() -> void:
