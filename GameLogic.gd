@@ -12,17 +12,30 @@ static func load_level(level_name: String) -> SummoningCircle:
 	var target_connectors : Array[Vector2i] = []
 	var offset_angle : float = 0
 	var flavor_text : String = ""
+	var initial_placements : Dictionary = {} # Maps target number to glyph symbol
 	match level_name:
 		"Level 1":
-			glyphs = [Symbol.FIRE]
 			flavor_text = """It's time for your first summoning!
 			
-			All you need to do is place the glyph in the
-			empty space within the summoning circle."""
-		"Level 2":
-			glyphs = [Symbol.FIRE, Symbol.WATER, Symbol.FIRE]
+			All you need to do is place the glyphs in the
+			empty spaces within the summoning circle.
+			
+			That's all there is to it!"""
+			glyphs = [Symbol.FIRE]
 			targets = 2
 			target_connectors = [Vector2i(0, 1)]
+			initial_placements = {0: Symbol.FIRE}
+			offset_angle = -90
+		"Level 2":
+			flavor_text = """It's not always that easy.
+			
+			Some glyphs don't like having certain other 
+			glyphs as neighbors. They'll make the summoning
+			circle UNSTABLE if you put them together."""
+			glyphs = [Symbol.FIRE, Symbol.FIRE]
+			targets = 2
+			target_connectors = [Vector2i(0, 1)]
+			initial_placements = {0: Symbol.WATER}
 			offset_angle = -90
 	var level: SummoningCircle = SUMMONING_CIRCLE_SCENE.instantiate() as SummoningCircle
 	level.glyphs = glyphs
@@ -30,5 +43,6 @@ static func load_level(level_name: String) -> SummoningCircle:
 	level.target_connectors = target_connectors
 	level.offset_angle = offset_angle
 	level.flavor_text = flavor_text
+	level.initial_placements = initial_placements
 	return level
 		

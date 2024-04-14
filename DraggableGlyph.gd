@@ -68,7 +68,6 @@ func begin_drag() -> void:
 	is_dragging = true;
 	drag_offset = get_global_mouse_position() - position
 	
-	
 func end_drag() -> void:
 	if is_dragging:
 		is_dragging = false

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cr4ukprpycwgr"]
+[gd_scene load_steps=5 format=3 uid="uid://cr4ukprpycwgr"]
 
 [ext_resource type="Script" path="res://SummoningCircle.gd" id="1_4yubp"]
 [ext_resource type="Script" path="res://BackgroundCircle.gd" id="2_b3go5"]
 [ext_resource type="Texture2D" uid="uid://drmvu1tlj7kx8" path="res://bg_gradient.tres" id="3_n004m"]
+[ext_resource type="Texture2D" uid="uid://y1cmeax56con" path="res://icons/back.svg" id="4_upsmq"]
 
 [node name="SummoningCircle" type="Control"]
 layout_mode = 3
@@ -62,3 +63,13 @@ theme_type_variation = &"FlavorText"
 layout_mode = 2
 text = "This is some flavor text
 explaining what to do in this level"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 132.0
+offset_bottom = 50.0
+text = "Back"
+icon = ExtResource("4_upsmq")
+expand_icon = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

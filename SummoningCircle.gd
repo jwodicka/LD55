@@ -16,7 +16,10 @@ var targets : int
 var _targets : Array[DropTarget] = []
 
 @export
-var target_connectors : Array[Vector2i]
+var target_connectors : Array[Vector2i] = []
+
+@export
+var initial_placements : Dictionary = {}
 
 @export
 var offset_angle : float = 0
@@ -29,9 +32,7 @@ var solved : bool = false
 var _base_direction: Vector2:
 	get:
 		return Vector2.UP.rotated(deg_to_rad(offset_angle))
-		
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var center_offset := Vector2(0.5, 0.5)
 	if !flavor_text.is_empty():
@@ -61,6 +62,12 @@ func _ready() -> void:
 		target.position = center + offset
 		$Targets.add_child(target)
 		_targets.append(target)
+		if initial_placements.has(i):
+			var glyph: DraggableGlyph = DRAGGABLE_GLYPH.instantiate()
+			glyph.symbol = initial_placements[i]
+			glyph.position = Vector2(target.position)
+			target.current_glyph = glyph
+			$Glyphs.add_child(glyph)
 	for c in target_connectors:
 		var connector: TargetConnector = TARGET_CONNECTOR.instantiate()
 		connector.end_a = _targets[c.x]
@@ -78,13 +85,18 @@ func _ready() -> void:
 				connector.add_point(offset)
 		$Connectors.add_child(connector);
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if !solved && _targets.all(
 		func(target: DropTarget) -> bool:
-			return target.is_valid() == GameLogic.State.CORRECT
+			return target.glyph_held && target.is_valid() == GameLogic.State.CORRECT
 	):
 		solved = true
+		for target: DropTarget in _targets:
+			target.current_glyph.is_locked = true
 		$BackgroundCircle.color = Color.DARK_MAGENTA
 		queue_redraw()
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://main_menu.tscn")
+	get_tree().root.remove_child(self)
+	self.queue_free()

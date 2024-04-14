@@ -2,6 +2,24 @@ class_name DropTarget
 extends Area2D
 
 var current_glyph : DraggableGlyph = null
+var glyph_held : bool:
+	get:
+		return _glyph_held
+	set(value):
+		if _glyph_held != value:
+			if value == true:
+				$AudioStreamPlayer.play()
+			_glyph_held = value
+var _glyph_held : bool
+
+func check_if_glyph_held() -> void:
+	if current_glyph == null:
+		glyph_held = false
+	elif current_glyph.is_dragging:
+		glyph_held = false
+	else:
+		glyph_held = true
+	
 var neighbors : Dictionary = {}
 
 func add_neighbor(neighbor : DropTarget, connector : TargetConnector) -> void:
@@ -55,27 +73,21 @@ func is_valid() -> GameLogic.State:
 		_:
 			return GameLogic.State.INCOMPLETE
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
 func _draw() -> void:
 	draw_circle(Vector2.ZERO, 60, _get_state_color())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if current_glyph != null && current_glyph.is_dragging == false:
+	check_if_glyph_held()
+	if glyph_held:
 		current_glyph.position = position
 
 func _on_area_entered(area: Area2D) -> void:
 	if current_glyph == null:
 		current_glyph = area
-		$AudioStreamPlayer.play()
 		_queue_redraw_neighborhood()
-		#print("Claimed ", area)
 
 func _on_area_exited(area: Area2D) -> void:
 	if current_glyph == area:
 		current_glyph = null;
 		_queue_redraw_neighborhood()
-		#print("Released ", area)
