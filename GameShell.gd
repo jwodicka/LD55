@@ -6,7 +6,7 @@ static var _game_shell: GameShell
 
 var main_menu: MainMenu
 
-var current_level: SummoningCircle = null
+var current_level: GameLevel = null
 
 static func enter_level(level_name: String, from_node: Node = null) -> void:
 	_game_shell._enter_level(level_name, from_node)

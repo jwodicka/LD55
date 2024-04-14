@@ -8,7 +8,7 @@ const TARGET_CONNECTOR = preload("res://target_connector.tscn")
 const CURVE_STEPS = 20
 
 @export
-var next_level : String = ""
+var radius : float = 300
 
 @export
 var glyphs : Array[GameLogic.Symbol]
@@ -30,30 +30,17 @@ var locked_targets : Array[int] = []
 @export
 var offset_angle : float = 0
 
-@export
-var flavor_text : String = ""
-
-@export
-var victory_text : String = ""
-
 var solved : bool = false
+
+var center: Vector2:
+	get:
+		return get_rect().size / 2.0
 
 var _base_direction: Vector2:
 	get:
 		return Vector2.UP.rotated(deg_to_rad(offset_angle))
 
 func _ready() -> void:
-	var center_offset := Vector2(0.5, 0.5)
-	if !flavor_text.is_empty():
-		center_offset = Vector2(0.75, 0.5)
-		$FlavorContainer.visible = true
-		$FlavorContainer/PanelContainer/FlavorLabel.text = flavor_text
-	else:
-		$FlavorContainer.visible = false
-	
-	var center := get_viewport_rect().size * center_offset
-	var radius := get_viewport_rect().size.y / 3
-	
 	$BackgroundCircle.position = center
 	$BackgroundCircle.radius = radius
 	
@@ -68,7 +55,7 @@ func _ready() -> void:
 		var target: DropTarget = DROP_TARGET.instantiate()
 		target.name = "DropTarget%d" % i
 		var offset: Vector2 = (_base_direction * radius).rotated((TAU / targets) * i)
-		target.position = center + offset
+		target.position = offset
 		$Targets.add_child(target)
 		_targets.append(target)
 		if initial_placements.has(i):
@@ -87,11 +74,12 @@ func _ready() -> void:
 		connector.end_b = _targets[c.y]
 		# Does this connector connect adjacent points?
 		if abs(c.x - c.y) == 1 || abs(c.x - c.y) == targets -1:
-			var offset_a := connector.end_a.position - center
-			var offset_b := connector.end_b.position - center
+			var offset_a := connector.end_a.position
+			var offset_b := connector.end_b.position
 
 			var angle: float
 			if (offset_a + offset_b).is_zero_approx():
+				print("direct pair") # BUG: This isn't happening
 				angle = PI
 			else:
 				angle = offset_a.angle_to(offset_b)
@@ -99,7 +87,7 @@ func _ready() -> void:
 			var angle_step := angle/CURVE_STEPS
 			for step in range(0, CURVE_STEPS + 1):
 				var theta := angle_step * step
-				var offset := offset_a.rotated(theta) + center
+				var offset := offset_a.rotated(theta)
 				connector.add_point(offset)
 		$Connectors.add_child(connector);
 
@@ -116,21 +104,15 @@ func on_victory() -> void:
 		target.current_glyph.is_locked = true
 	$BackgroundCircle.color = Color.BLACK
 	$BackgroundCircle/GPUParticles2D.emitting = true
-
-	var end_flavor_text := victory_text
-	if end_flavor_text.is_empty():
-		end_flavor_text = "Another successful summoning!"
-	(find_child("EndFlavorLabel") as Label).text = end_flavor_text
-
-	if next_level.is_empty():
-		find_child("NextButton").hide()
-
-	$VictoryOverlay.show()
 	queue_redraw()
 
 
-func _on_button_pressed() -> void:
-	GameShell.return_to_menu()
-
-func _on_next_button_pressed() -> void:
-	GameShell.enter_level(next_level, self)
+func _on_resized() -> void:
+	print("on_resized")
+	print("rect", get_rect())
+	print("c", center)
+	$Glyphs.transform = get_transform().translated(center)
+	$Targets.transform = get_transform().translated(center)
+	$Connectors.transform = get_transform().translated(center)
+	$BackgroundCircle.position = center
+	queue_redraw()
