@@ -29,15 +29,7 @@ func recalculate_audio() -> void:
 	
 
 func is_valid() -> GameLogic.State:
-	if (end_a.current_glyph == null) || (end_b.current_glyph == null):
-		return GameLogic.State.INCOMPLETE
-	var a_state := end_a.is_valid()
-	var b_state := end_b.is_valid()
-	if a_state == GameLogic.State.INCOMPLETE || b_state == GameLogic.State.INCOMPLETE:
-		return GameLogic.State.INCOMPLETE
-	if a_state == GameLogic.State.ERROR || b_state == GameLogic.State.ERROR:
-		return GameLogic.State.ERROR
-	return GameLogic.State.CORRECT
+	return GameLogic.is_connector_valid(self)
 
 func _get_state_color() -> Color:
 	match state:
