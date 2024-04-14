@@ -14,9 +14,20 @@ var state : GameLogic.State:
 		if value != state:
 			_state = value
 			default_color = _get_state_color()
+			material = _get_state_material()
 			queue_redraw()
 			recalculate_audio()
 var _state : GameLogic.State
+
+@export_category("Materials")
+@export
+var error_material : Material = null
+
+@export
+var correct_material : Material = null
+
+@export
+var incomplete_material : Material = null
 
 func recalculate_audio() -> void:
 	$CorrectAudioPlayer.stop()
@@ -42,6 +53,17 @@ func _get_state_color() -> Color:
 		_:
 			return Color.LAWN_GREEN
 
+func _get_state_material() -> Material:
+	match state:
+		GameLogic.State.INCOMPLETE:
+			return incomplete_material
+		GameLogic.State.ERROR:
+			return error_material
+		GameLogic.State.CORRECT:
+			return correct_material
+		_:
+			return null
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# If this doesn't have a line set, make it at runtime.
@@ -51,6 +73,7 @@ func _ready() -> void:
 	end_a.add_neighbor(end_b, self)
 	end_b.add_neighbor(end_a, self)
 	default_color = _get_state_color()
+	material = _get_state_material()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

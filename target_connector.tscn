@@ -1,12 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://db1383sgc661t"]
+[gd_scene load_steps=7 format=3 uid="uid://db1383sgc661t"]
 
+[ext_resource type="Shader" path="res://error_state.gdshader" id="1_em83w"]
 [ext_resource type="Script" path="res://TargetConnector.gd" id="1_oytll"]
 [ext_resource type="AudioStream" uid="uid://waij1tdiu28v" path="res://sounds/Mystic Hum.wav" id="2_8yjdq"]
+[ext_resource type="Texture2D" uid="uid://cth3vdhxqdg7j" path="res://longtest.svg" id="2_u4n76"]
 [ext_resource type="AudioStream" uid="uid://c6yag07jw8v2e" path="res://sounds/Problem Hum.wav" id="3_42r75"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_te5se"]
+shader = ExtResource("1_em83w")
+shader_parameter/magnitude = 10.0
+
 [node name="TargetConnector" type="Line2D"]
+texture_repeat = 2
 width = 35.0
+texture = ExtResource("2_u4n76")
+texture_mode = 1
 script = ExtResource("1_oytll")
+error_material = SubResource("ShaderMaterial_te5se")
 
 [node name="CorrectAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_8yjdq")
