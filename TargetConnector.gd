@@ -50,6 +50,7 @@ func _ready() -> void:
 		add_point(end_b.position)
 	end_a.add_neighbor(end_b, self)
 	end_b.add_neighbor(end_a, self)
+	default_color = _get_state_color()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
