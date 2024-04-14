@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://01uant35ppkp"]
+
+[ext_resource type="Script" path="res://GameShell.gd" id="1_f317j"]
+[ext_resource type="AudioStream" uid="uid://c4oek8gixre8g" path="res://sounds/music/bgm.mp3" id="2_rq5vr"]
+
+[node name="GameShell" type="Node"]
+script = ExtResource("1_f317j")
+
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_rq5vr")
+volume_db = -5.2
+bus = &"Music"

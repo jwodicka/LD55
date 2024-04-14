@@ -76,7 +76,6 @@ func _ready() -> void:
 		connector.end_b = _targets[c.y]
 		# Does this connector connect adjacent points?
 		if abs(c.x - c.y) == 1 || abs(c.x - c.y) == targets -1:
-			print("Adjacent points")
 			var offset_a := connector.end_a.position - center
 			var offset_b := connector.end_b.position - center
 
@@ -105,6 +104,4 @@ func _process(_delta: float) -> void:
 		queue_redraw()
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://main_menu.tscn")
-	get_tree().root.remove_child(self)
-	self.queue_free()
+	GameShell.return_to_menu()

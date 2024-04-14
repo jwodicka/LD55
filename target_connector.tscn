@@ -10,6 +10,9 @@ script = ExtResource("1_oytll")
 
 [node name="CorrectAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_8yjdq")
+bus = &"SFX"
 
 [node name="ErrorAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_42r75")
+volume_db = -5.85
+bus = &"SFX"
