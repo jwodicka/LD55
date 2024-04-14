@@ -60,42 +60,49 @@ static func has_glyph(target: DropTarget) -> bool:
 # Only call this on targets that are known to have a current_glyph!
 static func get_glyph(target: DropTarget) -> Symbol:
 	return target.current_glyph.symbol
+	
+static func count_symbols(symbols: Array[Symbol]) -> Dictionary:
+	return symbols.reduce(
+		func(acc: Dictionary, val: Symbol):
+			if !acc.has(val):
+				acc[val] = 0
+			acc[val] += 1
+			return acc,
+		{}
+	)
 
 static func is_target_valid(target: DropTarget) -> GameLogic.State:
 	var current_glyph := target.current_glyph
 	var neighborhood := target.neighbors.keys()
-	#var adjacent_glyphs := target.neighbors.keys().filter(has_glyph) #.map(get_glyph)
-	
-	#print(adjacent_glyphs)
+	var adjacent_glyphs := neighborhood.filter(GameLogic.has_glyph).map(GameLogic.get_glyph)
 	
 	if current_glyph == null:
 		return INCOMPLETE
 	match current_glyph.symbol:
 		SALT:
-			if neighborhood.any(
-				func (target: DropTarget) -> bool:
-					return target.current_glyph != null && target.current_glyph.symbol == SALT
-			):
+			if adjacent_glyphs.has(SALT):
 				return ERROR
 			else:
 				return CORRECT
 		WATER:
-			if neighborhood.any(
-				func (target: DropTarget) -> bool:
-					return target.current_glyph != null && target.current_glyph.symbol == FIRE
-			):
+			if adjacent_glyphs.has(FIRE):
 				return ERROR
 			else:
 				return CORRECT
 		FIRE:
-			if neighborhood.any(
-				func (target: DropTarget) -> bool:
-					return target.current_glyph != null && target.current_glyph.symbol == WATER
-			):
+			if adjacent_glyphs.has(WATER):
 				return ERROR
 			else:
 				return CORRECT
 		AIR:
-			return INCOMPLETE
+			if count_symbols(adjacent_glyphs).values().all(func (i: int): return i == 1):
+				return CORRECT
+			else:
+				return ERROR
+		EARTH:
+			if count_symbols(adjacent_glyphs).keys().size() > 1:
+				return ERROR
+			else:
+				return CORRECT
 		_:
 			return INCOMPLETE
