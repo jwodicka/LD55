@@ -88,6 +88,7 @@ func _on_input_event(_viewport : Viewport, event : InputEvent, _shape_idx : int)
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				begin_drag()
+				get_viewport().set_input_as_handled()
 			else:
 				end_drag()
 
