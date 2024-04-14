@@ -61,5 +61,10 @@ text = "Lesson One"
 layout_mode = 2
 text = "Lesson Two"
 
+[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Lesson Three"
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/VBoxContainer/Button" to="." method="_on_level_select" binds= ["Level 1"]]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/VBoxContainer/Button2" to="." method="_on_level_select" binds= ["Level 2"]]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Panel/VBoxContainer/Button3" to="." method="_on_level_select" binds= ["Level 3"]]

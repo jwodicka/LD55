@@ -45,6 +45,23 @@ static func load_level(level_name: String) -> SummoningCircle:
 			target_connectors = [Vector2i(0, 1)]
 			initial_placements = {0: Symbol.WATER}
 			offset_angle = -90
+		"Level 3":
+			flavor_text = """Not every glyph cares about exactly
+			which other glyphs it connects to.
+			
+			Some glyphs just need their entire set 
+			of neighbors to satisfy some condition."""
+			glyphs = [AIR, AIR, EARTH, EARTH, SALT, SALT]
+			targets = 6
+			target_connectors = [
+				Vector2i(0, 1),
+				Vector2i(1, 2),
+				Vector2i(2, 3),
+				Vector2i(3, 4),
+				Vector2i(4, 5),
+				Vector2i(5, 0),
+				Vector2i(2, 4)
+			]
 	var level: SummoningCircle = SUMMONING_CIRCLE_SCENE.instantiate() as SummoningCircle
 	level.glyphs = glyphs
 	level.targets = targets
@@ -61,8 +78,8 @@ static func has_glyph(target: DropTarget) -> bool:
 static func get_glyph(target: DropTarget) -> Symbol:
 	return target.current_glyph.symbol
 	
-static func count_symbols(symbols: Array[Symbol]) -> Dictionary:
-	return symbols.reduce(
+static func count_symbols(symbols: Array) -> Dictionary:
+	return symbols as Array[Symbol].reduce(
 		func(acc: Dictionary, val: Symbol):
 			if !acc.has(val):
 				acc[val] = 0
@@ -74,7 +91,7 @@ static func count_symbols(symbols: Array[Symbol]) -> Dictionary:
 static func is_target_valid(target: DropTarget) -> GameLogic.State:
 	var current_glyph := target.current_glyph
 	var neighborhood := target.neighbors.keys()
-	var adjacent_glyphs := neighborhood.filter(GameLogic.has_glyph).map(GameLogic.get_glyph)
+	var adjacent_glyphs = neighborhood.filter(GameLogic.has_glyph).map(GameLogic.get_glyph)
 	
 	if current_glyph == null:
 		return INCOMPLETE
