@@ -8,13 +8,15 @@ var main_menu: MainMenu
 
 var current_level: SummoningCircle = null
 
-static func enter_level(level_name: String) -> void:
-	_game_shell._enter_level(level_name)
+static func enter_level(level_name: String, from_node: Node = null) -> void:
+	_game_shell._enter_level(level_name, from_node)
 
-func _enter_level(level_name: String) -> void:
+func _enter_level(level_name: String, from_node: Node = null) -> void:
+	if from_node == null:
+		from_node = main_menu
 	current_level = GameLogic.load_level(level_name)
 	add_child(current_level)
-	remove_child(main_menu)
+	remove_child(from_node)
 
 static func return_to_menu() -> void:
 	_game_shell._return_to_menu()

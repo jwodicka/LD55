@@ -15,15 +15,19 @@ const ERROR = State.ERROR
 const CORRECT = State.CORRECT
 
 static func load_level(level_name: String) -> SummoningCircle:
+	var next_level : String
 	var glyphs : Array[Symbol] = []
 	var targets : int = 1
 	var target_connectors : Array[Vector2i] = []
 	var offset_angle : float = 0
 	var flavor_text : String = ""
+	var victory_text : String = ""
 	var initial_placements : Dictionary = {} # Maps target number to glyph symbol
 	var locked_targets : Array[int] = []
 	
 	var level_def: Dictionary = Levels.levels[level_name]
+	if "next_level" in level_def:
+		next_level = level_def.next_level
 	if "glyphs" in level_def:
 		glyphs.assign(level_def.glyphs)
 	if "targets" in level_def:
@@ -34,17 +38,21 @@ static func load_level(level_name: String) -> SummoningCircle:
 		offset_angle = level_def.offset_angle
 	if "flavor_text" in level_def:
 		flavor_text = level_def.flavor_text
+	if "victory_text" in level_def:
+		victory_text = level_def.victory_text
 	if "initial_placements" in level_def:
 		initial_placements = level_def.initial_placements
 	if "locked_targets" in level_def:
 		locked_targets.assign(level_def.locked_targets)
 
 	var level: SummoningCircle = SUMMONING_CIRCLE_SCENE.instantiate() as SummoningCircle
+	level.next_level = next_level
 	level.glyphs = glyphs
 	level.targets = targets
 	level.target_connectors = target_connectors
 	level.offset_angle = offset_angle
 	level.flavor_text = flavor_text
+	level.victory_text = victory_text
 	level.initial_placements = initial_placements
 	level.locked_targets = locked_targets
 	return level

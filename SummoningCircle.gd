@@ -8,6 +8,9 @@ const TARGET_CONNECTOR = preload("res://target_connector.tscn")
 const CURVE_STEPS = 20
 
 @export
+var next_level : String = ""
+
+@export
 var glyphs : Array[GameLogic.Symbol]
 
 @export
@@ -29,6 +32,9 @@ var offset_angle : float = 0
 
 @export
 var flavor_text : String = ""
+
+@export
+var victory_text : String = ""
 
 var solved : bool = false
 
@@ -103,11 +109,23 @@ func _process(_delta: float) -> void:
 			return target.glyph_held && target.is_valid() == GameLogic.State.CORRECT
 	):
 		solved = true
-		for target: DropTarget in _targets:
-			target.current_glyph.is_locked = true
-		$BackgroundCircle.color = Color.BLACK
-		$BackgroundCircle/GPUParticles2D.emitting = true
-		queue_redraw()
+		on_victory()
+
+func on_victory() -> void:
+	for target: DropTarget in _targets:
+		target.current_glyph.is_locked = true
+	$BackgroundCircle.color = Color.BLACK
+	$BackgroundCircle/GPUParticles2D.emitting = true
+	var end_flavor_text := victory_text
+	if end_flavor_text.is_empty():
+		end_flavor_text = "Another successful summoning!"
+	(find_child("EndFlavorLabel") as Label).text = end_flavor_text
+	$VictoryOverlay.show()
+	queue_redraw()
+
 
 func _on_button_pressed() -> void:
 	GameShell.return_to_menu()
+
+func _on_next_button_pressed() -> void:
+	GameShell.enter_level(next_level, self)
