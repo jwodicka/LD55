@@ -114,7 +114,7 @@ of neighbors to satisfy some condition.""",
             Vector2i(1, 3),
             Vector2i(1, 6),
             Vector2i(2, 5),
-            Vector2i(3, 4),
+            # Vector2i(3, 4),
             Vector2i(4, 6),
             Vector2i(5, 0)
         ]

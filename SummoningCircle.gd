@@ -116,10 +116,15 @@ func on_victory() -> void:
 		target.current_glyph.is_locked = true
 	$BackgroundCircle.color = Color.BLACK
 	$BackgroundCircle/GPUParticles2D.emitting = true
+
 	var end_flavor_text := victory_text
 	if end_flavor_text.is_empty():
 		end_flavor_text = "Another successful summoning!"
 	(find_child("EndFlavorLabel") as Label).text = end_flavor_text
+
+	if next_level.is_empty():
+		find_child("NextButton").hide()
+
 	$VictoryOverlay.show()
 	queue_redraw()
 
