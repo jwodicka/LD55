@@ -1,6 +1,17 @@
 class_name DropTarget
 extends Area2D
 
+@export
+var color : Color:
+	get:
+		return _color
+	set(value):
+		if value != _color:
+			_color = value
+			$Sprite2D.material.set_shader_parameter("shade_color", _color)
+	
+var _color := Color.WHITE
+
 var current_glyph : DraggableGlyph = null
 var glyph_held : bool:
 	get:
@@ -45,14 +56,11 @@ func _get_state_color() -> Color:
 func is_valid() -> GameLogic.State:
 	return GameLogic.is_target_valid(self)
 
-func _draw() -> void:
-	draw_circle(Vector2.ZERO, 60, _get_state_color())
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	check_if_glyph_held()
 	if glyph_held:
 		current_glyph.position = position
+	color = _get_state_color()
 
 func _on_area_entered(area: Area2D) -> void:
 	if current_glyph == null:

@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://ba6fubdrtgiaa"]
+[gd_scene load_steps=7 format=3 uid="uid://ba6fubdrtgiaa"]
 
 [ext_resource type="Script" path="res://DropTarget.gd" id="1_61gee"]
 [ext_resource type="AudioStream" uid="uid://cpmubidwd0mgc" path="res://sounds/Glyph-001.wav" id="2_qwy8f"]
+[ext_resource type="Shader" path="res://recolor.gdshader" id="3_3v3ap"]
+[ext_resource type="Texture2D" uid="uid://bggtcjrhosa27" path="res://icons/droptarget.svg" id="3_vmvlo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nspb5"]
 radius = 50.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5j6k4"]
+resource_local_to_scene = true
+shader = ExtResource("3_3v3ap")
+shader_parameter/shade_color = Color(1, 1, 1, 1)
 
 [node name="DropTarget" type="Area2D"]
 position = Vector2(608, 514)
@@ -16,6 +23,10 @@ shape = SubResource("CircleShape2D_nspb5")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_qwy8f")
 bus = &"SFX"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5j6k4")
+texture = ExtResource("3_vmvlo")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

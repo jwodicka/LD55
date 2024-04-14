@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="140"
+   height="140"
+   viewBox="0 0 140 140"
+   version="1.1"
+   id="svg36160"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="droptarget.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview36162"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="false"
+     inkscape:document-units="mm"
+     showgrid="false"
+     units="px"
+     viewbox-height="140"
+     inkscape:zoom="3.5690056"
+     inkscape:cx="69.627237"
+     inkscape:cy="69.627237"
+     inkscape:window-width="1620"
+     inkscape:window-height="1151"
+     inkscape:window-x="2926"
+     inkscape:window-y="74"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs36157">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient36716">
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="0"
+         id="stop36714" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0"
+         offset="0.85845751"
+         id="stop37232" />
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="1"
+         id="stop36712" />
+    </linearGradient>
+    <inkscape:path-effect
+       effect="simplify"
+       id="path-effect36584"
+       is_visible="false"
+       lpeversion="1"
+       steps="2"
+       threshold="0.002"
+       smooth_angles="0"
+       helper_size="5"
+       simplify_individual_paths="false"
+       simplify_just_coalesce="false" />
+    <inkscape:path-effect
+       effect="roughen"
+       id="path-effect36582"
+       is_visible="false"
+       lpeversion="1.1"
+       method="size"
+       max_segment_size="5"
+       segments="2"
+       displace_x="2;1"
+       displace_y="2;1"
+       global_randomize="1;1855645907"
+       handles="along"
+       shift_nodes="true"
+       fixed_displacement="false"
+       spray_tool_friendly="false" />
+    <inkscape:path-effect
+       effect="powerstroke"
+       id="path-effect36574"
+       is_visible="true"
+       lpeversion="1"
+       offset_points="2,2"
+       not_jump="false"
+       sort_points="true"
+       interpolator_type="SpiroInterpolator"
+       interpolator_beta="0.23229462"
+       start_linecap_type="zerowidth"
+       linejoin_type="round"
+       miter_limit="4"
+       scale_width="1"
+       end_linecap_type="zerowidth" />
+    <inkscape:path-effect
+       effect="fill_between_many"
+       method="bsplinespiro"
+       linkedpaths="#path36375,0,1"
+       id="path-effect36576" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient36716"
+       id="radialGradient36720"
+       cx="70"
+       cy="70"
+       fx="70"
+       fy="70"
+       r="60"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <path
+       id="path36375"
+       style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:4;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 130,70 A 60,60 0 0 1 70,130 60,60 0 0 1 10,70 60,60 0 0 1 70,10 60,60 0 0 1 130,70 Z"
+       inkscape:linked-fill="path36578" />
+    <path
+       id="path36610"
+       style="fill:url(#radialGradient36720);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:10;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 130,70 A 60,60 0 0 1 70,130 60,60 0 0 1 10,70 60,60 0 0 1 70,10 60,60 0 0 1 130,70 Z"
+       inkscape:linked-fill="path36578" />
+    <circle
+       style="display:inline;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path36608"
+       cx="70"
+       cy="70"
+       r="20" />
+  </g>
+</svg>
