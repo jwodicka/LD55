@@ -1,7 +1,8 @@
 class_name GameShell
 extends Node
 
-const MAIN_MENU_SCENE = preload("res://main_menu.tscn")
+@onready
+var MAIN_MENU_SCENE = load("res://main_menu.tscn")
 static var _game_shell: GameShell
 
 var main_menu: MainMenu
