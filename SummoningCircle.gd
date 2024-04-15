@@ -10,7 +10,7 @@ const CURVE_STEPS = 20
 signal puzzle_solved
 
 @export
-var radius : float = 300
+var radius : float = 200
 
 @export
 var glyphs : Array[GameLogic.Symbol]
@@ -51,7 +51,7 @@ func _ready() -> void:
 		var symbol := glyphs[i]
 		var glyph: DraggableGlyph = DRAGGABLE_GLYPH.instantiate()
 		glyph.symbol = symbol
-		var offset: Vector2 = (Vector2.UP * (radius + 125)).rotated((TAU / glyphs.size()) * i)
+		var offset: Vector2 = (Vector2.UP * (radius + 110)).rotated((TAU / glyphs.size()) * i)
 		glyph.position = offset
 		$Glyphs.add_child(glyph)
 	for i in range(targets):
